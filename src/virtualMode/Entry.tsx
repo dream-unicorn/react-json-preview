@@ -41,13 +41,13 @@ const Entry: FC<EntryProps> = props => {
   const [visibleData, setVisibleData] = useState<renderArray>([])
 
   useEffect(() => {
-    let prevHeight = containerRef.current.clientHeight
+    let prevOffsetHeight = containerRef.current.offsetHeight
     let firstRender = true
 
     const ob = new ResizeObserver(() => {
-      if (containerRef.current.clientHeight === prevHeight && !firstRender) return
+      if (containerRef.current.offsetHeight === prevOffsetHeight && !firstRender) return
 
-      prevHeight = containerRef.current.clientHeight
+      prevOffsetHeight = containerRef.current.offsetHeight
       firstRender = false
 
       const nvCount = Math.ceil(containerRef.current.clientHeight / rowHeight) + 1
